@@ -1,0 +1,18 @@
+http 模块
+fs 模块
+
+数据请求
+前台 -> form ajax jsonp 等方式
+后台 -> 都一样
+
+前台 方式 常用
+1GET  数据在url中
+2POST
+
+
+querystring模块专门处理url参数
+
+querystring.parse()
+url 模块专门处理url      'user=xxx?pass=xxx'   ===>                {user:'xxx',password: 'xxx'}  只解析数据部分
+url.parse(x,x)  第二个参数若为true 则会把返回值的query也会解析成对象
+
