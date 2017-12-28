@@ -1,0 +1,3 @@
+GET url模块
+
+POST接收数据 比GET 大得多

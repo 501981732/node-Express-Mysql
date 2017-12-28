@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>注册</title>
+</head>
+<body>
+    用户名: <input type="text" id="user"> 
+    密码：<input type="password" id="psw">
+    <br>
+    <input type="submit" value='注册' id='reg_btn'>
+    <input type="submit" value='登录' id="login_btn">
+    <script src="./ajax.js"></script>
+    <script>
+        window.onload = function() {
+            let user = document.getElementById('user')
+            let psw = document.getElementById('psw')
+            let regBtn = document.getElementById('reg_btn')
+            let loginBtn = document.getElementById('login_btn')
+
+            regBtn.onclick = function() {
+                ajax({
+                    url: '/user',
+                    data: {act: 'reg' ,user: user.value,pass: psw.value},
+                    type: 'get',
+                    success: function(str) {
+                        let json = eval('('+str+')')
+                        console.log(json)
+                        if (json.ok == true) {
+                            alert(json.msg)
+                        } else {
+                            alert(`注册失败${json.msg}`)
+                        }
+                    },
+                    error: function() {
+                        alert('通讯错误')
+                    }
+                })
+            };
+            // 登录
+            loginBtn.onclick = function() {
+                ajax({
+                    url: '/user',
+                    data: {act: 'login' ,user: user.value,pass: psw.value},
+                    type: 'get',
+                    success: function(str) {
+                        let json = eval('('+str+')')
+                        console.log(json)
+                        if (json.ok == true) {
+                            alert(json.msg)
+                        } else {
+                            alert(`登录失败${json.msg}`)
+                        }
+                    },
+                    error: function() {
+                        alert('通讯错误')
+                    }
+                })
+            }
+        }
+    </script>
+</body>
+</html>
