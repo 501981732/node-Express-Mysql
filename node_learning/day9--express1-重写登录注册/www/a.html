@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    用户名：<input type="text" id="user">
+    密码：<input type="password" id="password">
+    <input type="submit" value='登录' id='login_btn'>
+    <input type="submit" value='注册' id='reg_btn'>
+<script src="ajax.js"></script>
+<script>
+    // function() {
+        window.onload = function() {
+            var user = document.getElementById('user')
+            var password = document.getElementById('password')
+            var login_btn = document.getElementById('login_btn')
+            var reg_btn = document.getElementById('reg_btn')
+
+            login_btn.onclick = function() {
+                ajax({
+                    url: 'http://localhost:8080/login',
+                    data: {user: user.value,psw:password.value},
+                    type: 'get',
+                    success: function(data) {
+                        var data = JSON.parse(data)
+                        if(data.ok === true) {
+                            alert(data.msg)
+                        } else {
+                            alert(data.msg)
+                        }
+                    },
+                    error: function(data) {
+                        console.log(data)
+                    }
+                })
+            }
+            reg_btn.onclick = function() {
+                ajax({
+                    url: 'http://localhost:8080/register',
+                    data: {user: user.value,psw:password.value},
+                    type: 'get',
+                    success: function(data) {
+                        var data = JSON.parse(data)
+                        if(data.ok === true) {
+                            alert(data.msg)
+                        } else {
+                            alert(data.msg)
+                        }
+                    },
+                    error: function(data) {
+                        console.log(data)
+                    }
+                })
+            }
+        }
+    // }()
+</script>
+</body>
+
+</html>

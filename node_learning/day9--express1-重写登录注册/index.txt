@@ -1,0 +1,32 @@
+express 框架
+
+express保留了原生的功能，添加了一些方法
+
+app.use('/a.html',function(req,res)中req res和原生有区别
+1.非侵入式的，原生的保留加入新的东西
+res.write()只可以发字符串或者Buffer
+res.end()
+res.send()可发送json  加强版write
+
+步骤
+//1创建服务器
+var app = express()
+
+//2监听
+app.listen(8080)
+
+//3处理请求 不用在原生NODE里面if判断
+
+app.use('地址'，function(req,res){})
+
+.get('地址'，function(req,res){})
+.post('地址'，function(req,res){})
+.use('地址'，function(req,res){})
+
+//中间件 static
+app.use(express.static(path.join(__dirname, 'www')));
+
+
+
+
+//接口 /login?user=xx&psw=xx
