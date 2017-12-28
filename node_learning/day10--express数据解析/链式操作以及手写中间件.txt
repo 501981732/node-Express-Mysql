@@ -1,0 +1,16 @@
+express
+
+GET 无需中间件
+req.query
+POST 使用body-parser
+
+app.use(bodyParser.urlencoded({
+    extended: true, //扩展模式
+    limit:2*1024*1024   ,//限制 默认100k
+}))
+req.body
+
+
+链式操作： next()
+
+手写中间件
