@@ -1,0 +1,39 @@
+模板引擎：生成页面
+
+jade-破坏式的，侵入式的    不能与html共存
+ejs-温和的，非侵入的      能与html共存
+--------------------------------------------
+html                       <html>  <head></head><style></style> </html>
+    head
+        style
+--------------------------------------
+1.根据缩进，规定层级
+2.属性用()表示，用逗号分隔
+<script src='xx'></script>
+script(src='xx')
+input(type='input',value='aa')
+  *style={}
+  *class=[]
+
+    style="width:200px;height:200px;background:red;"
+    1.普通属性写法
+    2.用json
+
+    class="aaa left-swrap active"
+    1.普通属性写法
+    2.用arr
+
+
+3.内容
+  div xxx
+    span xxx
+      a(href="xxx") 链接
+
+<a href = 'xxx'>官网</a>
+a(href='xxx') 官网
+
+
+jade.render('字符串');
+jade.renderFile('模板文件名', 参数)
+
+
