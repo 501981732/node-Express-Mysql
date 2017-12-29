@@ -1,5 +1,5 @@
 express 框架
-
+没有太强大的功能，而是可以用各种中间件
 express保留了原生的功能，添加了一些方法
 
 app.use('/a.html',function(req,res)中req res和原生有区别

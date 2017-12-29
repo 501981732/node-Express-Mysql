@@ -1,0 +1,98 @@
+express :
+数据
+中间件
+
+http无状态
+
+cookie： 保存数据，保存在浏览器 每次请求都会带过来
+不安全  有限（4K）
+document.cookie = 'xxx=x'
+
+session，保存数据，保存在服务端
+安全，无限
+
+-------------------------------------
+
+session是基于cookie实现的
+
+cookie中会有个session的ID，服务器利用session ID找到session文件，读取，写入
+隐患：session劫持
+
+--------------------------------------
+cookie
+
+1. 读取--   
+cookie-parser
+
+app.use(cookieParser('XX'))
+
+req.cookies    未签名
+req.signedCookies  签名
+
+2. 发送--  
+req.secret = 'XX'
+res.cookie('user','wmm',{path:'/aaa',maxAge: 30*24*3600*1000,signed:true})
+cookie可以向下读取
+
+a/   这里可以读取
+  a/b  这里cookie
+
+  签名 -----不能加密，但是可以防止篡改....
+
+  1.精打细算
+  2.校验是否被篡改过
+
+3删除cookie
+
+res.clearCookie('名字')
+
+4. 加密 
+cookie-encrypter
+
+--------------------------------------session-----------------------------------------
+session
+
+cookie-session中间件
+
+app.use(cookieSessiono({
+    name: ,
+    keys:[], //必选
+    maxAge:,
+}))
+1.写入
+
+2.读取
+req.session
+3.删除
+delete req.session
+
+
+
+
+
+
+
+
+总结---------------------------------------------
+1.cookie-存在浏览器，4K，不安全
+  签名、加密
+
+2.session-存在服务器
+  不能独立存在，基于cookie
+
+-----------------------------------------------------------------
+
+server.use(cookieParser('签名字符串'));
+server.use(cookieSession({
+
+}));
+
+server.use(function (req, res){
+    res.cookie(名字, 值, {signed: true});
+
+    res.cookies['user']
+    res.clearCookie('名字');
+
+    res.session['xxx']
+    delete res.session['xxx'];
+});

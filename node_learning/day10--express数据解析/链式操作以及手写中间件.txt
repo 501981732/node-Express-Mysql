@@ -1,16 +1,32 @@
 express
 
 GET 无需中间件
-req.query
+取数据：req.query
 POST 使用body-parser
 
 app.use(bodyParser.urlencoded({
     extended: true, //扩展模式
     limit:2*1024*1024   ,//限制 默认100k
 }))
-req.body
+取数据：req.body
 
 
 链式操作： next()
 
+---------------------------------------
 手写中间件
+const querystring = require('querystring');
+
+modile.exports = function (req,res,next) {
+    
+    var str = ''
+    req.on('data',function(data){
+        str += data 
+    })
+    req.on('end',function(){
+        // 将收集来的数据放到body传递
+        req.body = str
+
+        next()
+    })
+}
