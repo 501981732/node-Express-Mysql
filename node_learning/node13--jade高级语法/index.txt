@@ -1,0 +1,45 @@
+jade
+    1自动识别单双标签
+    2自定义标签会默认双标签
+    3输出abc |abc   |可以原样输出
+    4或者标签后加点  2.jade    scrript. 表面标签内部的原样输出不经过编译
+    5. include 用法 script
+                        include a.js
+    6. 变量   模板#{}
+        div(class=arr class="active")
+        模板中也可以写变量
+        -var a=12;
+        -var b=5;
+        div 结果是：#{a+b}
+
+
+        span #{a}  等同于
+        span=a
+
+    7. 循环    
+        -for(var i=0;i<arr.length;i++)
+            div=arr[i]
+
+    8.输出html
+
+        div!=content
+
+    注入式攻击
+
+    9.if
+    
+    if(aa%2==0)
+          div(style={background:'red'}) 偶数
+        else
+          div(style={background:'green'}) 奇数
+
+
+        case a
+          when 0
+            div aaa
+          when 1
+            div bbb
+          when 19
+            div ccc
+          default
+            |不靠谱

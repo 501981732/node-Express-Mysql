@@ -1,0 +1,43 @@
+html
+    head
+    body
+        div
+            |我的名字 #{name}
+
+        div(style=json)
+        div(class=arr)
+        div(class=arr class="active")
+        div(class=arr)
+        div(class=arr)
+
+        -var c=12;
+        -var d=5;
+        div 结果是：#{c+d}
+
+
+        span #{a}
+        span=a
+
+        -for(var i=0;i<arr2.length;i++)
+            div=arr2[i]
+
+
+        div!=content
+
+
+        -var aa=19;
+        if(aa%2==0)
+          div(style={background:'red'}) 偶数
+        else
+          div(style={background:'green'}) 奇数
+
+
+        case a
+          when 0
+            div aaa
+          when 1
+            div bbb
+          when 19
+            div ccc
+          default
+            |不靠谱
