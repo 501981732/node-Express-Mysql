@@ -1,4 +1,4 @@
-jade
+﻿jade
     1自动识别单双标签
     2自定义标签会默认双标签
     3输出abc |abc   |可以原样输出
@@ -43,3 +43,6 @@ jade
             div ccc
           default
             |不靠谱
+
+
+http://naltatis.github.io/jade-syntax-docs/#escaping

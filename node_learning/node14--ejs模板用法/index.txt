@@ -1,0 +1,36 @@
+ejs 非侵入式的
+
+<%= name %>
+<%= json.arr[0].name %>
+<%= 12+5 %>
+<%= 'asdfasdf' %>
+
+//for
+    <% for(var i=0;i<5;i++){ %>
+    <% include ./a.txt %>
+    <% } %>
+
+
+    <% if(type=='admin'){ %>
+    <% include ./style/a.css %>
+    <%}else{%>
+    <% include ./style/b.css %>
+    <% } %>
+//if
+    <% for(var i=0;i<5;i++){ %>
+    <% include ./a.txt %>
+    <% } %>
+
+
+    <% if(type=='admin'){ %>
+    <% include ./style/a.css %>
+    <%}else{%>
+    <% include ./style/b.css %>
+    <% } %>
+
+// include 不可以写变量
+    <% include css_path %>
+
+=转译输出
+-不转译输出
+

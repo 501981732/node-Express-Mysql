@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div>
+      <%=name%>
+    </div>
+
+    <div>
+      <%=json.arr[0].user%>
+    </div>
+
+
+    <% for(var i=0;i<json.arr.length;i++){ %>
+    <div>用户名：<%=json.arr[i].user%> 密码：<%=json.arr[i].pass%></div>
+    <% } %>
+
+
+    <% var str="<div>111</div>"; %>
+
+    <%- str %>
+
+
+
+    <% for(var i=0;i<5;i++){ %>
+    <% include ./a.txt %>
+    <% } %>
+
+
+    <% if(type=='admin'){ %>
+    <% include ./style/a.css %>
+    <%}else{%>
+    <% include ./style/b.css %>
+    <% } %>
+
+// include 不可以写变量
+    <% include css_path %>
+  </body>
+</html>
