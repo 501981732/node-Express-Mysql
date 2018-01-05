@@ -1,0 +1,34 @@
+﻿express 比较落后是因为不支持saync es6新的异步写法
+
+比如需要查询到banner article等所有信息之后再渲染就必须要嵌套回调
+
+不过也可以用experss的链式写法
+
+app.use('/index', function(req, res, next) {
+// 查询banner的东西
+    db.query("SELECT * FROM `banner_table`",function(err,data) {
+        if(err) {
+            res.status(500).send('database error').end()
+
+        } else {
+        //这里不能直接render
+        res.banner = data
+        next()
+            //res.render('index.ejs',{banners: data})
+        }
+    })
+})
+app.use('/index', function(req, res, next) {
+// 查询banner的东西
+    db.query("SELECT * FROM `article_table`",function(err,data) {
+        if(err) {
+            res.status(500).send('database error').end()
+        } else {
+
+            res.render('index.ejs',{banners: res.banner,article: data})
+        }
+    })
+})
+
+
+此部分渲染新闻列表，以及为下面新闻详情传递参数
