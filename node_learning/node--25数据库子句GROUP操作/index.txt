@@ -1,0 +1,36 @@
+转储sql
+运行sql
+
+GROUP 聚类--合并相同的
+------------------------------
+统计每个班的平均分
+    ID  name      class score
+    "1" "王猛1"   "3" "87"
+    "2" "小碗"    "2" "67"
+    "3" "王猛2"   "2" "99"
+    "4" "111"   "1" "15"
+    "5" "222"   "2" "32"
+    "6" "333"   "3" "86"
+    "7" "444"   "1" "84"
+
+    //每个班人数
+    SELECT class,SCORE(class) FROM group_demo GROUP BY class
+    //每个班平均分
+    SELECT class,AVG(score) FROM group_demo GROUP BY class
+    //每个班最高分最低分
+    SELECT class,name,MIN(score) FROM group_demo GROUP BY class
+    SELECT class,name,MAX(score) FROM group_demo GROUP BY class
+
+-----------------------------------
+    //每个人的消费总额
+    ID  name    price
+    "1" "王大"    "100000"
+    "2" "李二"    "10"
+    "3" "张三"    "1452"
+    "4" "王大"    "1321314"
+    "5" "李二"    "2342"
+    "6" "张三"    "13132"
+    每个人的消费总金额
+    SELECT name,SUM(price) FROM sales_table GROUP BY name
+    消费金额排行榜
+    SELECT name,SUM(price) FROM sales_table GROUP BY name ORDER BY SUM(price) DESC
