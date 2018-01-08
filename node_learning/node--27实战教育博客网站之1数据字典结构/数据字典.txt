@@ -35,15 +35,17 @@
         title        varchar(32)
         description  varchar(300)
         src          varchar(300)
-        icon_src     varchar(300)
-        big_pic_src  varchar(300)
-        content      text
+
 -------------------------------------------------
     news_table 新闻表
         ID
         title         varchar(100)
         summary       varchar(500)
-        href          varchar(300)
+        //href          varchar(300)
+        icon_src     varchar(300)
+        big_pic_src  varchar(300)
+        content      text
+
 -------------------------------------------------
     blog_table 博文表
         ID
@@ -58,10 +60,27 @@
 
 -------------------------------------------------
     contact_table 地址表
-        
+        ID     
+        street       varchar(50)
+        phone        varchar(20)
+        fax          varchar(20)
+        email        varchar(64)
+        weibo        varchar(50)
+        wx           varchar(40)
+        map          ??
 -------------------------------------------------
 
     msg_table 发送信息表
+        ID           
+        name         varchar(16)
+        email        varchar(64)
+        subject      text
+
+
 -------------------------------------------------
 
-    about_us 关于我们表
+    about_us_table 关于我们表
+        title         varchar(200)
+        content       text
+        pic_src       varchar(300)
+        href          varchar(300)
