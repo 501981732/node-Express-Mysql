@@ -23,7 +23,7 @@ var arr = []
 for (var i = 0;i<100000;i++) {
     arr.push('keys_' + Math.random())
 }
-app.use(cookieParser({
+app.use(cookieSession({
     name: 'sess_id',
     keys: arr,
     maxAge: 20*3600*1000
