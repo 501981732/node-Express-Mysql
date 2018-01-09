@@ -56,6 +56,9 @@ router.post('/login',(req,res) =>{
 router.get('/',(req,res) =>{
     res.render('admin/index.ejs',{})
 })
+router.get('/banners',(req,res) =>{
+    res.render('admin/banners.ejs',{})
+})
 })
 
 
