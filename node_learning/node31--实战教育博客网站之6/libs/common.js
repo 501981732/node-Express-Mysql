@@ -1,3 +1,11 @@
+/*
+ * @file: 公共工具库
+ * @Author: wm
+ * @Date:   2018-01-10
+ * 用法：import common = require('')
+        // md5签名加密
+        let str =  common.md5(common.md5(s+common.MD5_SUFFIX))
+ */
 const crypto = require('crypto')
 
 // md5签名加密
@@ -8,10 +16,6 @@ function md5(str) {
     obj.update(str)
     return obj.digest('hex')    //以数字的形式获取结果    hex： 16进制
 }
-
-
-
-
 
 module.exports = {
     MD5_SUFFIX: 'dgfsdadsdffgnhmhgfdsfadsfdgfdhgfdsfdgfdgswe4r567uhnbvbcxzsdwretrythgnbcvvgdfh',
