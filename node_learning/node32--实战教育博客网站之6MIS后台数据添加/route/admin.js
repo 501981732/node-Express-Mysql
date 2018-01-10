@@ -20,11 +20,11 @@ router.use((req,res,next)=>{
 })
 
 // 登录页面
-// get时访问页面
+// get时    访问页面
 router.get('/login',(req,res)=>{
     res.render('admin/login.ejs',{})
 })
-// post时候 出来数据
+// post时候 数据
 router.post('/login',(req,res) =>{
     // console.log(req.body)  //获取post数据  body-parser
     var username = req.body.username
@@ -43,7 +43,7 @@ router.post('/login',(req,res) =>{
                 res.status(400).send('no this admin').end()
             } else {
                 if(data[0].password !== password) {
-                    res.status(400).send('this password isincorrect').end()
+                    res.status(400).send('this password is incorrect').end()
                 } else {
                     // 登录成功存储session
                     req.session['admin_id'] = data[0].ID
@@ -56,10 +56,57 @@ router.post('/login',(req,res) =>{
 router.get('/',(req,res) =>{
     res.render('admin/index.ejs',{})
 })
+// ----------------banner---------------------------------------------------
 router.get('/banners',(req,res) =>{
-    res.render('admin/banners.ejs',{})
+
+    switch(req.query.act) {
+        case 'mod':
+        // todo
+        break
+        case 'del':
+            db.query(`DELETE FROM banner_table WHERE ID=${req.query.id}`,(err,data) =>{
+                if (err) {
+                    console.error(err)
+                    res.status(500).send('database error').end()
+                } else {
+                    res.redirect('/admin/banners')
+                }
+            })
+        break
+        default:
+            db.query(`SELECT * FROM banner_table`,(err,data) =>{
+                if(err) {
+                    console.error(err)
+                    res.status(500).send('database error').end()
+                } else {
+                    res.render('admin/banners.ejs',{banners:data})
+                }
+            })
+            break
+    }
+    })
 })
+router.post('/banners',(req,res) =>{
+    let title = req.body.title
+    let description = req.body.description
+    let href = req.body.href
+    if (!title || !description || !href) {
+        res.status(400).send('arg error').end()
+    } else {
+        db.query(`INSERT INTO banner_table (title,description,href) VALUES('${title}','${description}','${href}')`,(err,data)=>{
+            if(err) {
+                console.error(err)
+                res.status(500).send('err').end()
+            } else {
+                // get方式回去
+                // 数据得以呈现
+                // res.send('ok').end()
+                res.redirect('/admin/banners')
+            }
+        })
+    }
 })
+
 
 
 
