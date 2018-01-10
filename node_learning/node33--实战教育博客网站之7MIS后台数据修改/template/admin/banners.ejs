@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+    <div class="page">
+        <% include components/header.ejs %>
+        <div class="top_wrap">
+            <!-- <form action="/admin/banner"> -->
+                <!-- ?代表当前地址 -->
+            <form action="?" method="post">
+                标题：<input type="text" name="title"><br><br>
+                描述：<textarea name="description" id="" cols="30" rows="10"></textarea><br><br>
+                链接： <input type="text" name="href"><br>
+                <input type="submit" value="添加"><br>
+            </form>
+            <div></div>
+            <table border="1" width="100%">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>标题</th>
+                        <th>描述</th>
+                        <th>链接</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%for(var i = 0,len=banners.length;i<len;i++) {%>
+                    <tr>
+                        <td width='3%'><%=banners[i].ID%></td>
+                        <td><%=banners[i].title%></td>
+                        <td width='60%'><%=banners[i].description%></td>
+                        <td width='30%'><%=banners[i].href%></td>
+                        <td width='7%'>
+                            <a href="?act=mod&id=<%=banners[i].ID%>">修改</a>
+                            <a href="?act=del&id=<%=banners[i].ID%>" onclick='return confirm("确定要删除？")'>删除</a>
+                        </td>
+                    </tr>
+                    <%}%>
+                </tbody>
+                
+            </table>
+            <div>修改用的</div>
+        </div>
+    </div>
+</body>
+</html>
