@@ -46,8 +46,8 @@ app.set('view engine','html')
 // -----------------------------4.route--------------------------------------
 
 // router路由模块写法
-app.use('/',require('./route/web.js'))
-app.use('/admin',require('./route/admin.js'))
+app.use('/',require('./route/web/web.js'))
+app.use('/admin',require('./route/admin/index.js'))
 //--------------------------5.static静态文件----------------------------------------
 
 app.use(express.static('./static/'))
