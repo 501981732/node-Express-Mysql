@@ -5,12 +5,15 @@
     <title></title>
     <!-- <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="../css/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/bootstrap/dist/js/bootstrap.js">
+    <link rel="stylesheet" href="../css/reset.css">
     <!-- <link rel="stylesheet" href="../css/1.css"> -->
     <style>
         .form-control{
             display: inline-block;
             width: 80%;
+        }
+        .container{
+            height: 100%;
         }
     </style>
 </head>
@@ -20,7 +23,7 @@
         <div class="col-md-12 column">
             <!-- 头文件 -->
         <% include components/header.ejs %>
-            <form role="form"  class="col-md-4" style="margin-top: 20px" action="?" method="post">
+            <form role="form"  class="col-md-8" style="margin-top: 20px" action="?" method="post">
                 <div class="form-group">
                      <label for="title"> 标题：</label><input type="text" class="form-control" id="title" name='title'/>
                 </div>
@@ -51,7 +54,7 @@
                 </thead>
                 <tbody>
                     <%for(var i = 0,len=banners.length;i<len;i++) {%>
-                    <tr class="success">
+                    <tr class="success ">
                         <td width='3%'><%=banners[i].ID%></td>
                         <td><%=banners[i].title%></td>
                         <td width='60%'><%=banners[i].description%></td>

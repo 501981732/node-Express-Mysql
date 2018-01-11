@@ -6,7 +6,7 @@ const mysql = require('mysql')
 // 创建连接池
 let db = mysql.createPool({host:'localhost',user:'root',password:'123456',database:'learner'})
 
-// -----------------------------------------------------------------------------
+// -----------------------------1------------------------------------------------
 // 访问所有页面时检查登录状态
 router.use((req,res,next)=>{
     // 检查登录状态
@@ -22,7 +22,7 @@ router.use((req,res,next)=>{
     }
 })
 
-// 登录页面
+// ----------------------------2登录页面-------------------------------------------
 // get时    访问页面
 router.get('/login',(req,res)=>{
     res.render('admin/login.ejs',{})
@@ -55,11 +55,18 @@ router.post('/login',(req,res) =>{
             }
         }
     })
+// -----------------------3退出登录接口-------------------------------------------
+
+router.get('/out',(req,res) =>{
+    // 登录成功存储session
+    req.session['admin_id'] = ''
+    res.status(200).send({code:1,data:{}}).end()
+})
 // 管理界面
 router.get('/',(req,res) =>{
     res.render('admin/index.ejs',{})
 })
-// ----------------banner---------------------------------------------------
+// ---------------------------4banner------------------------------------------
 router.get('/banners',(req,res) =>{
 
     switch(req.query.act) {
@@ -113,6 +120,7 @@ router.post('/banners',(req,res) =>{
 router.get('/demo.html',(req,res) =>{
     res.render('admin/demo.ejs',{})
 })
+
 
 
 
