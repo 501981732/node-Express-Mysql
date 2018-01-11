@@ -5,6 +5,9 @@ const mysql = require('mysql')
 
 // 创建连接池
 let db = mysql.createPool({host:'localhost',user:'root',password:'123456',database:'learner'})
+
+// -----------------------------------------------------------------------------
+// 访问所有页面时检查登录状态
 router.use((req,res,next)=>{
     // 检查登录状态
     // 登录之后加cookie but cookie不安全
@@ -98,7 +101,7 @@ router.post('/banners',(req,res) =>{
                 console.error(err)
                 res.status(500).send('err').end()
             } else {
-                // get方式回去
+                // get方式重定向回去
                 // 数据得以呈现
                 // res.send('ok').end()
                 res.redirect('/admin/banners')
@@ -106,7 +109,10 @@ router.post('/banners',(req,res) =>{
         })
     }
 })
-
+// --------------------------------------------------------------------------------------
+router.get('/demo.html',(req,res) =>{
+    res.render('admin/demo.ejs',{})
+})
 
 
 

@@ -3,21 +3,43 @@
 <head>
     <meta charset="utf-8">
     <title></title>
+    <!-- <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="../css/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap/dist/js/bootstrap.js">
+    <!-- <link rel="stylesheet" href="../css/1.css"> -->
+    <style>
+        .form-control{
+            display: inline-block;
+            width: 80%;
+        }
+    </style>
 </head>
 <body>
-    <div class="page">
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <!-- 头文件 -->
         <% include components/header.ejs %>
-        <div class="top_wrap">
-            <!-- <form action="/admin/banner"> -->
-                <!-- ?代表当前地址 -->
-            <form action="?" method="post">
-                标题：<input type="text" name="title"><br><br>
-                描述：<textarea name="description" id="" cols="30" rows="10"></textarea><br><br>
-                链接： <input type="text" name="href"><br>
-                <input type="submit" value="添加"><br>
+            <form role="form"  class="col-md-4" style="margin-top: 20px" action="?" method="post">
+                <div class="form-group">
+                     <label for="title"> 标题：</label><input type="text" class="form-control" id="title" name='title'/>
+                </div>
+                <div class="form-group">
+                     <label for="description">描述：</label><textarea class="form-control"  name="description" id="" ></textarea>
+                </div>
+                <div class="form-group">
+                     <label for="href">链接：</label><input type="text" class="form-control" id="href" name="href" />
+                </div>
+<!--                 <div class="form-group">
+                     <label for="exampleInputFile">File input</label><input type="file" id="exampleInputFile" />
+                    <p class="help-block">
+                        Example block-level help text here.
+                    </p>
+                </div> -->
+                <button type="submit" class="btn btn-default">添加</button>
+
             </form>
-            <div></div>
-            <table border="1" width="100%">
+            <table class="table">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -29,7 +51,7 @@
                 </thead>
                 <tbody>
                     <%for(var i = 0,len=banners.length;i<len;i++) {%>
-                    <tr>
+                    <tr class="success">
                         <td width='3%'><%=banners[i].ID%></td>
                         <td><%=banners[i].title%></td>
                         <td width='60%'><%=banners[i].description%></td>
@@ -41,10 +63,9 @@
                     </tr>
                     <%}%>
                 </tbody>
-                
-            </table>
-            <div>修改用的</div>
+            </table> 
         </div>
     </div>
+</div>
 </body>
 </html>
