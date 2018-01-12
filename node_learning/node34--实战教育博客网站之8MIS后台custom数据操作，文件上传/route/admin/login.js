@@ -2,7 +2,9 @@
 const express = require('express')
 const router = express.Router()
 const common = require('../../libs/common.js')
+const mysql = require('mysql')
 
+let db = mysql.createPool({host:'localhost',user:'root',password:'123456',database:'learner'})
 
 // get时    访问页面
 router.get('/',(req,res)=>{

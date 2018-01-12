@@ -39,5 +39,7 @@ router.get('/',(req,res) =>{
 })
 // ------------------------5banner------------------------------------------
 router.use('/banners',require('./banners.js'))
+// ------------------------6custom--------------------------------------------------------
+router.use('/custom',require('./custom.js'))
 
 module.exports = router
