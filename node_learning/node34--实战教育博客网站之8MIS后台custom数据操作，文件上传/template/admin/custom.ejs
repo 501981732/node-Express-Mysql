@@ -25,7 +25,7 @@
         <div class="col-md-12 column">
             <!-- 头文件 -->
         <% include components/header.ejs %>
-            <form role="form"  class="col-md-8" style="margin-top: 20px" action="?" method="post">
+            <form role="form"  class="col-md-8" style="margin-top: 20px" action="?" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                      <label for="title"> 标题：</label><input type="text" class="form-control" id="title" name='title'/>
                 </div>
@@ -33,7 +33,7 @@
                      <label for="description">描述：</label><textarea class="form-control"  name="description" id="" ></textarea>
                 </div>
                 <div class="form-group">
-                     <label for="src">链接：</label><input type="text" class="form-control" id="href" name="src" />
+                     <label for="src">头像：</label><input type="file" class="form-control" id="src" name="f1" />
                 </div>
 <!--                 <div class="form-group">
                      <label for="exampleInputFile">File input</label><input type="file" id="exampleInputFile" />
@@ -50,7 +50,7 @@
                         <th>ID</th>
                         <th>标题</th>
                         <th>描述</th>
-                        <th>链接</th>
+                        <th>头像</th>
                         <th>操作</th>
                     </tr>
                 </thead>
@@ -60,7 +60,7 @@
                         <td width='3%'><%=custom[i].ID%></td>
                         <td><%=custom[i].title%></td>
                         <td width='60%'><%=custom[i].description%></td>
-                        <td width='30%'><%=custom[i].src%></td>
+                        <td width='30%'><img src ='/upload/<%=custom[i].src%>' width=50 height=50></td>
                         <td width='7%'>
                             <button type="submit" class="btn btn-default btn-sm"><a href="?act=mod&id=<%=custom[i].ID%>">修改</a></button>
 
@@ -72,6 +72,24 @@
                     <%}%>
                 </tbody>
             </table> 
+
+            <%if(typeof mod_data!='undefined'){%>
+            <div class="shadow"></div>
+            <form role="form"  class="col-md-8 mod_dialog" style="margin-top: 20px" action="?" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="mod_id" value="<%= mod_data.ID %>" />
+                <div class="form-group">
+                     <label for="title"> 标题：</label><input type="text" class="form-control" id="title" name='title' value="<%=mod_data.title%>"/>
+                </div>
+                <div class="form-group">
+                     <label for="description">描述：</label><textarea class="form-control"  name="description" id="" ><%=mod_data.description%></textarea>
+                </div>
+                <div class="form-group">
+                     <label for="href">头像：</label><input type="file" class="form-control" id="href" name="f1" />
+                </div>
+                <button type="submit" class="btn btn-default">修改</button>
+                <a href ='/admin/custom'></a>
+            </form>
+            <%}%>
     </div>
 </div>
 </body>

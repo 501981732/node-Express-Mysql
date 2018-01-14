@@ -17,7 +17,7 @@ app.listen(8080)
     //get自带 
     // post                                            //req.query
     // 解析文件数据
-    app.use(multer({dest:'./www/upload/'}).any())      //req.files
+    app.use(multer({dest:'./static/upload/'}).any())      //req.files
 
     // 解析post普通数据
     app.use(bodyParser.urlencoded({extended: false}))  //req.body
