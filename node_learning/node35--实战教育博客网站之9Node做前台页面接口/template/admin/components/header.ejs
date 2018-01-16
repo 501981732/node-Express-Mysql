@@ -1,0 +1,27 @@
+<div class="nav nav-tabs" style='margin-top:10px'>
+    <li><a href="/admin/">管理首页</a></li>
+    <li><a href="/admin/banners">banner设置</a></li>
+    <li><a href="/admin/blog">blog设置</a></li>
+    <li><a href="/admin/contact">联系方式</a></li>
+    <li><a href="/admin/custom">用户评价</a></li>
+    <li><a href="/admin/intro">产品介绍</a></li>
+    <li><a href="/admin/msg">留言管理</a></li>
+    <li><a href="/admin/news">新闻管理</a></li>
+</div>
+<script>
+    (function(){
+            var lia =document.querySelectorAll(".nav li a")
+            var url = window.location.href.split('admin/')[1]
+                console.log(url)
+
+            lia.forEach( (item,index,arr) =>{
+                // console.log(item.href)
+                if(!url) {
+                    lia[0].parentNode.className = lia[0].parentNode.className + ' active'
+                }else if(item.href.indexOf(url)!==-1) {
+                    let parentNode = item.parentNode
+                    parentNode.className = parentNode.className + ' active'
+                }
+            })
+        })()
+</script>
