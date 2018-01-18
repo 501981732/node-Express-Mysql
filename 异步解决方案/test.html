@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+</body>
+<script>
+    function timeout(ms) {
+  return new Promise((resolve,reject) => {
+    setTimeout(reject, ms);
+  });
+}
+
+async function asyncPrint(value, ms) {
+  await timeout(ms).catch(_=>{
+    console.log(_)
+  })
+  console.log(value);
+}
+
+asyncPrint('hello world', 5000)
+</script>
+</html>
